@@ -1,0 +1,45 @@
+@bubble-prefix: bubble-demo1;
+
+:root {
+  --bubble-demo1-color: blue;
+  --bubble-demo1-diameter: 100px;
+  --bubble-demo1-left: calc(50% - var(--bubble-demo1-diameter) / 2);
+  --bubble-demo1-animation-time: 2s;
+}
+
+.@{bubble-prefix} {
+  &-container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: end;
+  }
+
+  &-footer {
+    height: 50%;
+    width: 100%;
+    border-radius: 18px;
+    background-color: var(--bubble-demo1-color);
+    position: relative;
+  }
+
+  &-element {
+    position: absolute;
+    left: var(--bubble-demo1-left);
+    width: var(--bubble-demo1-diameter);
+    height: var(--bubble-demo1-diameter);
+    background-color: var(--bubble-demo1-color);
+    border-radius: 50%;
+    animation: moveAndFade var(--bubble-demo1-animation-time) linear infinite;
+    transform-origin: center;
+  }
+
+  @keyframes moveAndFade {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      transform: translateY(-200px) scale(0);
+    }
+  }
+}

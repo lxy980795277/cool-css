@@ -1,0 +1,46 @@
+@bubble-prefix: bubble-demo2;
+
+:root {
+  --bubble-demo2-color: blue;
+  --bubble-demo2-diameter: 100px;
+  --bubble-demo2-left: calc(50% - var(--bubble-demo2-diameter) / 2);
+  --bubble-demo2-animation-time: 2s;
+}
+
+.@{bubble-prefix} {
+  &-container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: end;
+  }
+
+  &-footer {
+    height: 50%;
+    width: 100%;
+    border-radius: 18px;
+    background-color: var(--bubble-demo2-color);
+    position: relative;
+    filter: url(#bubble-demo2-blob);
+  }
+
+  &-element {
+    position: absolute;
+    left: var(--bubble-demo2-left);
+    width: var(--bubble-demo2-diameter);
+    height: var(--bubble-demo2-diameter);
+    background-color: var(--bubble-demo2-color);
+    border-radius: 50%;
+    animation: moveAndFade var(--bubble-demo2-animation-time) linear infinite;
+  }
+
+  @keyframes moveAndFade {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-200px) scale(0);
+    }
+  }
+}
